@@ -1,8 +1,9 @@
-import * as express from 'express'
+import  express from 'express'
 import {Application,  Response, NextFunction} from 'express'
 import corsMid, { CorsConfig } from './middlewares/cors';
 import errorMid from './middlewares/error';
 import { AuthRequest } from './typings/customHttp';
+import path from 'path';
 
 interface ICors{
     config: CorsConfig;
@@ -39,8 +40,9 @@ export default class Server{
         this._app.use(this._cors_mid)
         this._app.use(express.json())
         this._app.use(errorMid)
+        this._app.use(express.static(path.join(__dirname, 'public')));
         this._app.use('/', (req: express.Request, res: express.Response, next: NextFunction) => {
-            res.send({message: "connexion réussi"})
+            res.sendFile(path.join(__dirname,'..' ,'public', 'index.html'));
         })
         this._app.listen(this.port, () => {
             console.clear()

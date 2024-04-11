@@ -1,6 +1,6 @@
 import mongoose, { Document, Schema } from 'mongoose';
-
-import * as uniqueValidator  from "mongoose-unique-validator";
+import bcrypt from 'bcrypt';
+import uniqueValidator  from "mongoose-unique-validator";
 
 // Définir l'interface représentant les données de votre document
 interface IUser extends Document {
@@ -29,6 +29,20 @@ const userSchema: Schema<IUser> = new Schema<IUser>({
 
 // Appliquer le plugin uniqueValidator au schéma
 userSchema.plugin(uniqueValidator);
+
+// Avant de sauvegarder, hacher le mot de passe
+userSchema.pre<IUser>('save', async function(next) {
+    if (!this.isModified('password')) {
+        return next();
+    }
+    try {
+        const hashedPassword = await bcrypt.hash(this.password, 10);
+        this.password = hashedPassword;
+        next();
+    } catch (error:any) {
+        next(error);
+    }
+});
 
 // Créer et exporter le modèle à partir du schéma
 export default mongoose.model<IUser>('User', userSchema);

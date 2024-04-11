@@ -7,7 +7,8 @@
       "rootDir": "./src",
       "module": "CommonJS",
       "strict": true,
-      "skipLibCheck": true
+      "skipLibCheck": true,
+      "esModuleInterop": true
       
     },
     
