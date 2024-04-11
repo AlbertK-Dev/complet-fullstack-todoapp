@@ -1,20 +1,29 @@
-# Complet Fullstack Todo App (Backend)
+# Application de gestion de tâches Complète (Backend)
 
-Ceci est le dépôt backend pour Complet Fullstack Todo App (un nom à modifier), une application web de gestion complète des tâches.
+Ceci est le dépôt backend pour l'Application de gestion de tâches Complète (un nom à modifier), une application web de gestion complète des tâches. Ce projet semble banal au premier abord, mais il offrira une expérience complète grâce aux fonctionnalités suivantes :
+
+1. Possibilité de créer, modifier et supprimer une tâche.
+2. Ajouter des sous-tâches.
+3. Programmer les tâches.
+4. Programmer des alertes.
+5. Utiliser des modèles prédéfinis de tâche (ex: Pomodoro).
+6. Possibilité pour l'utilisateur de créer ses propres modèles de tâche.
+7. Programmer les tâches.
 
 ## Installation
 
 1. Clonez ce dépôt.
 2. Exécutez `npm install` pour installer les dépendances.
 3. Configurez les variables d'environnement dans un fichier `.env`.
-   - la variable `MONGODB_CONNEXION_STRING` pour la connexion string de la BD mongodb
-   - la variable `JWT_SECRET` pour le Secret Json Web Token
-   - la variable `PORT` pour le port sur lequel sera lancer le serveur
+   - La variable `MONGODB_CONNEXION_STRING` pour la chaîne de connexion à la base de données MongoDB.
+   - La variable `JWT_SECRET` pour le secret Json Web Token.
+   - La variable `PORT` pour le port sur lequel le serveur sera lancé.
 
 ## Utilisation
 
 1. Exécutez `npm run dev` pour démarrer le serveur de développement.
-2. Le serveur fonctionnera à l'adresse `http://localhost:3002` ou à l'adresse spécifier dans la variable `PORT` de votre fichier`.env`.
+2. Le serveur fonctionnera à l'adresse `http://localhost:3002` ou à l'adresse spécifiée dans la variable `PORT` de votre fichier `.env`.
+3. La documentation est disponible sur ce [lien](https://complet-fullstack-todoapp-backend-1h8zmo6wc.vercel.app).
 
 ## Contributions
 
