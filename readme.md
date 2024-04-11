@@ -1,14 +1,16 @@
-# Application de gestion de tâches Complète (Backend)
+# Application de Gestion de Tâches Complète (Backend)
 
-Ceci est le dépôt backend pour l'Application de gestion de tâches Complète (un nom à modifier), une application web de gestion complète des tâches. Ce projet semble banal au premier abord, mais il offrira une expérience complète grâce aux fonctionnalités suivantes :
+Ceci est le dépôt backend pour l'Application de Gestion de Tâches Complète (un nom à modifier), une application web de gestion complète des tâches. Ce projet semble banal au premier abord, mais il offrira une expérience complète grâce aux fonctionnalités suivantes :
 
-1. Possibilité de créer, modifier et supprimer une tâche.
-2. Ajouter des sous-tâches.
-3. Programmer les tâches.
-4. Programmer des alertes.
-5. Utiliser des modèles prédéfinis de tâche (ex: Pomodoro).
-6. Possibilité pour l'utilisateur de créer ses propres modèles de tâche.
-7. Programmer les tâches.
+## Fonctionnalités
+
+- Possibilité de créer, modifier et supprimer une tâche.
+- Ajouter des sous-tâches.
+- Programmer les tâches.
+- Programmer des alertes.
+- Utiliser des modèles prédéfinis de tâche (ex: Pomodoro).
+- Possibilité pour l'utilisateur de créer ses propres modèles de tâche.
+- Programmer les tâches.
 
 ## Installation
 
