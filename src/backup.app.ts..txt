@@ -1,0 +1,119 @@
+import express from 'express';
+import type  { Request, Response, NextFunction } from 'express'
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+import mongoose from 'mongoose';
+
+const app = express();
+app.use(express.json());
+
+// MongoDB setup
+mongoose.connect('mongodb://localhost:27017/mydb', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("Connected to MongoDB");
+});
+
+// Define the "toto" schema
+const totoSchema = new mongoose.Schema({
+  name: String,
+  description: String
+});
+
+// Define the "toto" model
+const Toto = mongoose.model('Toto', totoSchema);
+
+// Middleware to verify JWT token
+const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  if (token == null) return res.sendStatus(401);
+  
+  jwt.verify(token, SECRET_KEY, (err: any, user: any) => {
+    if (err) return res.sendStatus(403);
+    req.user = user;
+    next();
+  });
+};
+
+// Login route
+app.post('/login', (req: Request, res: Response) => {
+  // Your login logic
+});
+
+// Protected route
+app.get('/protected', authenticateToken, (req: Request, res: Response) => {
+  // Your protected route logic
+});
+
+// CRUD operations for "toto" entity
+
+// Create a new toto
+app.post('/toto', async (req: Request, res: Response) => {
+  try {
+    const { name, description } = req.body;
+    const newToto = new Toto({ name, description });
+    await newToto.save();
+    res.status(201).json(newToto);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Get all totos
+app.get('/toto', async (req: Request, res: Response) => {
+  try {
+    const totos = await Toto.find();
+    res.json(totos);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Get a single toto by ID
+app.get('/toto/:id', async (req: Request, res: Response) => {
+  try {
+    const toto = await Toto.findById(req.params.id);
+    if (!toto) {
+      return res.status(404).json({ message: 'Toto not found' });
+    }
+    res.json(toto);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Update a toto by ID
+app.put('/toto/:id', async (req: Request, res: Response) => {
+  try {
+    const { name, description } = req.body;
+    const updatedToto = await Toto.findByIdAndUpdate(req.params.id, { name, description }, { new: true });
+    if (!updatedToto) {
+      return res.status(404).json({ message: 'Toto not found' });
+    }
+    res.json(updatedToto);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Delete a toto by ID
+app.delete('/toto/:id', async (req: Request, res: Response) => {
+  try {
+    const deletedToto = await Toto.findByIdAndDelete(req.params.id);
+    if (!deletedToto) {
+      return res.status(404).json({ message: 'Toto not found' });
+    }
+    res.json({ message: 'Toto deleted' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
+});

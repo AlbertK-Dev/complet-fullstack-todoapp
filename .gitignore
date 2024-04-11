@@ -1,0 +1,12 @@
+# Ignore les fichiers et dossiers générés par Node.js
+/node_modules
+/dist
+
+# Ignore les fichiers de configuration locaux
+.env
+
+# Ignore les fichiers de sauvegarde de l'éditeur de texte
+*.swp
+
+# Ignore les fichiers de sauvegarde de Visual Studio Code
+.vscode/
