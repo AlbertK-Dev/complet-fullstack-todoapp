@@ -41,7 +41,7 @@ export default class Server{
         this._app.use(express.json())
         this._app.use(errorMid)
         this._app.use(express.static(path.join(__dirname, 'public')));
-        this._app.get('/', (req: express.Request, res: express.Response, next: NextFunction) => {
+        this._app.get('/test', (req: express.Request, res: express.Response, next: NextFunction) => {
             res.sendFile(path.join(__dirname,'..' ,'public', 'index.html'));
         })
         this._app.use('/api', (req: express.Request, res: express.Response, next: NextFunction) => {
