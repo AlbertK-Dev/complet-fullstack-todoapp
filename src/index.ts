@@ -1,6 +1,6 @@
-import MongoDB from "./src/database/config";
-import normalizePort from "./src/helpers/normalizePort";
-import Server from "./src/server"
+import MongoDB from "./database/config";
+import normalizePort from "./helpers/normalizePort";
+import Server from "./server"
 import 'dotenv/config';
 
 
