@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from "express";
-import { AuthRequest } from "../types/customHttp";
+import { NextFunction, Response } from "express";
+import { AuthRequest } from "../typings/customHttp";
 
 const jwt = require('jsonwebtoken');
 
