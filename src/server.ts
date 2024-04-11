@@ -44,6 +44,9 @@ export default class Server{
         this._app.use('/', (req: express.Request, res: express.Response, next: NextFunction) => {
             res.sendFile(path.join(__dirname,'..' ,'public', 'index.html'));
         })
+        this._app.use('/api', (req: express.Request, res: express.Response, next: NextFunction) => {
+            res.send({messageforFront: "Todo Web App"});
+        })
         this._app.listen(this.port, () => {
             console.clear()
             console.log(`serveur démarrer avec succès sur le port ${this.port}`)
