@@ -1,6 +1,6 @@
-import MongoDB from "./database/config";
-import normalizePort from "./helpers/normalizePort";
-import Server from "./server"
+import MongoDB from "./src/database/config";
+import normalizePort from "./src/helpers/normalizePort";
+import Server from "./src/server"
 import 'dotenv/config';
 
 
@@ -19,3 +19,4 @@ const MyServer = new Server(port)
 MyServer.cors.allowAll()
 MyServer.start()
 
+export default MyServer.app

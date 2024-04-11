@@ -41,8 +41,11 @@ export default class Server{
         this._app.use(express.json())
         this._app.use(errorMid)
         this._app.use(express.static(path.join(__dirname, 'public')));
-        this._app.get('/test', (req: express.Request, res: express.Response, next: NextFunction) => {
+        this._app.get('/', (req: express.Request, res: express.Response, next: NextFunction) => {
             res.sendFile(path.join(__dirname,'..' ,'public', 'index.html'));
+        })
+        this._app.use('/test', (req: express.Request, res: express.Response, next: NextFunction) => {
+            res.send({messageforFront: "Your Backend is deployed"});
         })
         this._app.use('/api', (req: express.Request, res: express.Response, next: NextFunction) => {
             res.send({messageforFront: "Todo Web App"});
@@ -52,8 +55,14 @@ export default class Server{
             console.log(`serveur démarrer avec succès sur le port ${this.port}`)
             
         })
+
         
     }
+
+    public get app() : Application {
+        return this._app
+    }
+    
     
     
     public get cors() : CorsConfig {

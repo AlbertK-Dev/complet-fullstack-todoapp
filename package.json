@@ -4,10 +4,9 @@
   "description": "Fullstack todo App",
   "main": "src/app.js",
   "scripts": {
-    "start": "node dist/app.js",
-    "dev": "concurrently -k -n \"Typescript,Node\" -p \"[{name}]\" -c \"blue,green\" \"tsc --watch\" \"nodemon dist/app.js\"",
-    "build": "tsc -p .",
-    "start:ts": "nodemon src/app.ts"
+    "start": "node index.ts",
+    "dev": "nodemon index.ts"
+   
   },
   "keywords": [],
   "author": "Albert-K",
