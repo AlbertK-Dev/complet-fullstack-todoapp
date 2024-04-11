@@ -1,5 +1,7 @@
 # Ignore les fichiers et dossiers générés par Node.js
 /node_modules
+
+package-lock.json
 /dist
 
 # Ignore les fichiers de configuration locaux
