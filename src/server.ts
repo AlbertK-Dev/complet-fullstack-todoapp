@@ -1,5 +1,5 @@
 import  express from 'express'
-import {Application,  Response, NextFunction} from 'express'
+import {Application,Router ,  Response, NextFunction} from 'express'
 import corsMid, { CorsConfig } from './middlewares/cors';
 import errorMid from './middlewares/error';
 import { AuthRequest } from './typings/customHttp';
@@ -11,6 +11,33 @@ interface ICors{
 
 }
 
+
+interface IExpressRoute{
+    path: string;
+    router: Router;
+}
+
+export class AppRoute implements IExpressRoute{
+    private _path: string;
+    private _router: Router;
+    static  allPath: Array<string> = []; 
+
+    constructor(path: string, router: Router) {
+        this._path = path;
+        this._router = router;
+        AppRoute.allPath.push(path)
+    }
+    
+
+    
+    public get path() : string {
+        return this._path;
+    }
+    public get router() : Router {
+        return this._router;
+    }  
+
+}
 
 export default class Server{
 
@@ -44,12 +71,6 @@ export default class Server{
         this._app.get('/', (req: express.Request, res: express.Response, next: NextFunction) => {
             res.sendFile(path.join(__dirname,'..' ,'public', 'index.html'));
         })
-        this._app.use('/test', (req: express.Request, res: express.Response, next: NextFunction) => {
-            res.send({messageForFront: "Your Backend is deployed"});
-        })
-        this._app.use('/api', (req: express.Request, res: express.Response, next: NextFunction) => {
-            res.send({messageForFront: "Todo Web App"});
-        })
         this._app.listen(this.port, () => {
             console.clear()
             console.log(`serveur démarrer avec succès sur le port ${this.port}`)
@@ -62,6 +83,12 @@ export default class Server{
     public get app() : Application {
         return this._app
     }
+
+    
+    useRoute(route:AppRoute) {
+        this._app.use(route.path,route.router)
+    }
+    
     
     
     

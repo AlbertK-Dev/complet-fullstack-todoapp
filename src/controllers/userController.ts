@@ -3,12 +3,12 @@ import { OK } from "../config/httpErrors";
 
 
 const textTodo = (req: Request, res: Response, next: NextFunction) => {
-    res.status(OK.code).json({messageForFront: "You are on todo route"})
+    res.status(OK.code).json({messageForFront: "You are on user route"})
 
 }
 
-const todoController = {
+const userController = {
     test: textTodo
 }
 
-export default todoController
+export default userController
