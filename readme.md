@@ -1,6 +1,6 @@
 # Application de Gestion de Tâches Complète (Backend)
 
-Ceci est le dépôt backend pour l'Application de Gestion de Tâches Complète (un nom à modifier), une application web de gestion complète des tâches. Ce projet semble banal au premier abord, mais il offrira une expérience complète grâce aux fonctionnalités suivantes :
+Ceci est le dépôt backend pour l'Application de Gestion de Tâches Complète (un nom à modifier), une application web de gestion complète des tâches. Ce projet semble banal au premier abord, mais il offre une expérience complète grâce aux fonctionnalités suivantes :
 
 ## Fonctionnalités
 
@@ -11,6 +11,12 @@ Ceci est le dépôt backend pour l'Application de Gestion de Tâches Complète (
 - Utiliser des modèles prédéfinis de tâche (ex: Pomodoro).
 - Possibilité pour l'utilisateur de créer ses propres modèles de tâche.
 - Programmer les tâches.
+- Créer des groupes de travail.
+- Créer des défis.
+- Partager des plannings.
+- Créer des projets.
+- Surveiller la progression.
+- Gestion des notifications.
 
 ## Installation
 
@@ -35,6 +41,8 @@ Les contributions sont les bienvenues ! Veuillez soumettre une demande de pull p
 
 - TypeScript
 - Mongoose
+- Express
+- JSON Web Token
 
 ## Licence
 
