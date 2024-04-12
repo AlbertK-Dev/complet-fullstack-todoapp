@@ -45,10 +45,10 @@ export default class Server{
             res.sendFile(path.join(__dirname,'..' ,'public', 'index.html'));
         })
         this._app.use('/test', (req: express.Request, res: express.Response, next: NextFunction) => {
-            res.send({messageforFront: "Your Backend is deployed"});
+            res.send({messageForFront: "Your Backend is deployed"});
         })
         this._app.use('/api', (req: express.Request, res: express.Response, next: NextFunction) => {
-            res.send({messageforFront: "Todo Web App"});
+            res.send({messageForFront: "Todo Web App"});
         })
         this._app.listen(this.port, () => {
             console.clear()
